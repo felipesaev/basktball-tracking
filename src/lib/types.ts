@@ -79,3 +79,84 @@ export const MOOD_EMOJIS: Record<Mood, string> = {
   ok: "👍",
   tired: "😴",
 };
+
+// === Rachas (Pickup Games) ===
+
+export type GameResult = "win" | "loss";
+
+export interface PickupGame {
+  id: string;
+  date: string;
+  location: string | null;
+  duration_minutes: number;
+  players_notes: string | null;
+  points: number;
+  assists: number;
+  rebounds: number;
+  steals: number;
+  blocks: number;
+  result: GameResult;
+  notes: string | null;
+  created_at: string;
+}
+
+// === Jogos Oficiais (Official Games) ===
+
+export type GameStatus = "scheduled" | "completed" | "cancelled";
+
+export interface OfficialGame {
+  id: string;
+  date: string;
+  time: string | null;
+  opponent: string;
+  location: string | null;
+  status: GameStatus;
+  team_score: number | null;
+  opponent_score: number | null;
+  points: number;
+  assists: number;
+  rebounds: number;
+  steals: number;
+  blocks: number;
+  minutes_played: number;
+  fouls: number;
+  notes: string | null;
+  created_at: string;
+}
+
+// === Stats compartilhados ===
+
+export interface PlayerStats {
+  points: number;
+  assists: number;
+  rebounds: number;
+  steals: number;
+  blocks: number;
+}
+
+export const GAME_RESULT_LABELS: Record<GameResult, string> = {
+  win: "Vitoria",
+  loss: "Derrota",
+};
+
+export const GAME_STATUS_LABELS: Record<GameStatus, string> = {
+  scheduled: "Agendado",
+  completed: "Finalizado",
+  cancelled: "Cancelado",
+};
+
+export const STAT_LABELS: Record<keyof PlayerStats, string> = {
+  points: "Pontos",
+  assists: "Assistencias",
+  rebounds: "Rebotes",
+  steals: "Roubos",
+  blocks: "Tocos",
+};
+
+export const STAT_SHORT_LABELS: Record<keyof PlayerStats, string> = {
+  points: "PTS",
+  assists: "AST",
+  rebounds: "REB",
+  steals: "STL",
+  blocks: "BLK",
+};
